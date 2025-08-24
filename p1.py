@@ -16,5 +16,27 @@ while True:
         print("Invalid, Try Again")
 
 max_score = 50
-player_scores = [] # storing all scores for the players
 player_scores = [0 for i in range(players)] # this can give us a list that makes a list for all players and puts 0 - list comprehension
+
+while max(player_scores) < max_score:
+
+    for player_idx in range(players):
+        print("\nPlayer ",player_idx+1," turn has started\n")
+        current_score = 0
+
+        while True:
+
+            should_roll = input("Would you like to roll (Y) : ")
+            if should_roll.lower() != 'y':
+                break
+            value = roll()
+            if value == 1:
+                current_score = 0
+                print("You rolled a 1, Turn Done!")
+            else:
+                current_score += value
+                print("You rolled a: ",value)
+            
+            print("current score = ",current_score)
+        player_scores[player_idx] = current_score
+        print("Your total score is = ",player_scores[player_idx])
